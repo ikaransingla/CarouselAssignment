@@ -37,7 +37,8 @@ struct CarouselView<T: Identifiable, Content: View>: View {
                     HStack(spacing: spacing) {
                         ForEach(Array(items.enumerated()), id: \.0) { (index, item) in
                             content(item)
-                                .frame(width: UIScreen.main.bounds.width - widthOffset, height: 400)
+                                .frame(width: UIScreen.main.bounds.width - widthOffset)
+                                .aspectRatio(1, contentMode: .fit)
                                 .zIndex(selectedIndex == index ? 1 : 0)
                                 .scrollTransition { content, phase in
                                     content
